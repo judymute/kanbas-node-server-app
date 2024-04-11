@@ -40,6 +40,22 @@ export default function CourseRoutes(app) {
     res.send(courses);
   });
 
+  app.put('/api/courses/:id', async (req, res) => {
+    try {
+      const courseId = req.params.id;
+      const { color } = req.body;
+
+      // Update the course color in the database
+      await updateCourseColor(courseId, color);
+
+      res.sendStatus(200);
+    } catch (error) {
+      console.error('Error updating course color:', error);
+      res.sendStatus(500);
+    }
+  });
+
+
 
 
 
