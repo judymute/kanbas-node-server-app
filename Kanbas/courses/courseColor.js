@@ -1,14 +1,16 @@
-import Database from "../../Database/index.js";
+import db from "../Database/index.js";
+const { Course } = db;
+
 
 async function updateCourseColor(courseId, color) {
-  // Find the course with the given courseId in the Database.courses array
-  const course = Database.courses.find((c) => c._id === courseId);
-
-  if (course) {
-    // Update the color property of the found course
-    course.color = color;
-  } else {
-    throw new Error('Course not found');
+  try {
+    const course = await Course.findByIdAndUpdate(courseId, { color }, { new: true });
+    if (!course) {
+      throw new Error('Course not found');
+    }
+    return course;
+  } catch (error) {
+    throw error;
   }
 }
 
