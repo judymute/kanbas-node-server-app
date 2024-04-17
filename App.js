@@ -27,8 +27,7 @@ console.log(CONNECTION_STRING)
 const app = express() // create new express instance
 app.use(cors({
   credentials: true, // support cookies
-  origin: "http://localhost:3000", // restrict cross origin resource sharing to the react application
-  origin: process.env.FRONTEND_URL
+  origin: ["http://localhost:3000", process.env.FRONTEND_URL]
 })); // make sure cors is used right after creating the app npmexpress instance
 
 app.use(express.json()); // make sure this statement occurs AFTER setting up CORS
@@ -54,6 +53,7 @@ UserRoutes(app);
 Lab5(app);
 Hello(app) // pass app reference to Hello
 ModuleRoutes(app); // configure JSON HTTP body parsing FIRST
+// and THEN configure new routes
 
 CourseRoutes(app);
 // app.listen(4000) // listen to http://localhost:4000
