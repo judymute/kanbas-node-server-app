@@ -30,6 +30,7 @@ app.use(cors({
   origin: [ process.env.FRONTEND_URL, "http://localhost:3000"]
 })); // make sure cors is used right after creating the app npmexpress instance
 
+
 app.use(express.json()); // make sure this statement occurs AFTER setting up CORS
 
 
