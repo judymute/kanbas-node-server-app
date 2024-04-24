@@ -27,7 +27,7 @@ console.log(CONNECTION_STRING)
 const app = express() // create new express instance
 app.use(cors({
   credentials: true, // support cookies
-  origin: [process.env.FRONTEND_URL, "http://localhost:3000"]
+  origin: [process.env.FRONTEND_URL, process.env.FRONTEND_A6_URL, process.env.FRONTEND_A5_URL, "http://localhost:3000"]
 })); // make sure cors is used right after creating the app npmexpress instance
 
 
