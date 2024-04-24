@@ -27,7 +27,7 @@ console.log(CONNECTION_STRING)
 const app = express() // create new express instance
 app.use(cors({
   credentials: true, // support cookies
-  origin: process.env.FRONTEND_URL
+  origin: process.env.FRONTEND_URL || 'https://project--kanbas-react-application.netlify.app'
 })); // make sure cors is used right after creating the app npmexpress instance
 
 
