@@ -11,7 +11,9 @@ import ModuleRoutes from "./Kanbas/modules/routes.js";
 import cors from "cors";
 import mongoose from "mongoose";
 import UserRoutes from "./Kanbas/Users/routes.js";
+import QuestionRoutes from "./Kanbas/Questions/routes.js";
 import QuizRoutes from "./Kanbas/Quizzes/routes.js";
+
 
 
 // mongoose.connect("mongodb://127.0.0.1:27017/kanbas");
@@ -50,7 +52,7 @@ if (process.env.NODE_ENV !== "development") {
 }
 app.use(session(sessionOptions));
 
-
+QuestionRoutes(app);
 UserRoutes(app);
 Lab5(app);
 Hello(app) // pass app reference to Hello
