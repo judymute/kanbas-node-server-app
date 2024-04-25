@@ -6,7 +6,8 @@ export default [
       "number": "RS4550",
       "startDate": "2023-01-10",
       "endDate": "2023-05-15",
-      "image": "course-image-4.jpeg"
+      "image": "course-image-1.jpg",
+      "color": "#FF2717"
     },
     {
       "_id": "RS102",
@@ -14,7 +15,8 @@ export default [
       "number": "RS4560",
       "startDate": "2023-01-10",
       "endDate": "2023-05-15",
-      "image": "course-image-4.jpeg"
+      "image": "course-image-2.jpg",
+      "color": "#FF2717"
     },
     {
       "_id": "RS103",
@@ -22,7 +24,8 @@ export default [
       "number": "RS4570",
       "startDate": "2023-01-10",
       "endDate": "2023-05-15",
-      "image": "course-image-4.jpeg"
+      "image": "course-image-3.jpg",
+      "color": "#FF2717"
     },
   
     {
@@ -31,7 +34,8 @@ export default [
       "number": "RS4580",
       "startDate": "2023-01-10",
       "endDate": "2023-05-15",
-      "image": "course-image-8.jpeg"
+      "image": "course-image-4.jpg",
+      "color": "#FF2717"
     },
     {
       "_id": "RS105",
@@ -39,7 +43,8 @@ export default [
       "number": "RS4590",
       "startDate": "2023-01-10",
       "endDate": "2023-05-15",
-      "image": "course-image-8.jpeg"
+      "image": "course-image-5.jpg",
+      "color": "#FF2717"
     },
     {
       "_id": "RS106",
@@ -47,7 +52,8 @@ export default [
       "number": "RS4600",
       "startDate": "2023-01-10",
       "endDate": "2023-05-15",
-      "image": "course-image-8.jpeg"
+      "image": "course-image-6.jpg",
+      "color": "#FF2717"
     },
     {
       "_id": "RS107",
@@ -55,7 +61,8 @@ export default [
       "number": "RS4610",
       "startDate": "2023-01-10",
       "endDate": "2023-05-15",
-      "image": "course-image-9.jpeg"
+      "image": "course-image-4.jpeg",
+      "color": "#FF2717"
     },
     {
       "_id": "RS108",
@@ -63,7 +70,8 @@ export default [
       "number": "RS4620",
       "startDate": "2023-01-10",
       "endDate": "2023-05-15",
-      "image": "course-image-9.jpeg"
+      "image": "course-image-8.jpeg",
+      "color": "#FF2717"
     },
     {
       "_id": "RS109",
@@ -71,6 +79,7 @@ export default [
       "number": "RS4630",
       "startDate": "2023-01-10",
       "endDate": "2023-05-15",
-      "image": "course-image-9.jpeg"
+      "image": "course-image-9.jpeg",
+      "color": "#FF2717"
     }
 ];
