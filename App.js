@@ -12,6 +12,8 @@ import cors from "cors";
 import mongoose from "mongoose";
 import UserRoutes from "./Kanbas/Users/routes.js";
 import QuestionRoutes from "./Kanbas/Questions/routes.js";
+import QuizRoutes from "./Kanbas/Quizzes/routes.js";
+
 
 
 // mongoose.connect("mongodb://127.0.0.1:27017/kanbas");
@@ -56,6 +58,7 @@ Lab5(app);
 Hello(app) // pass app reference to Hello
 ModuleRoutes(app); // configure JSON HTTP body parsing FIRST
 // and THEN configure new routes
+QuizRoutes(app);
 
 CourseRoutes(app);
 // app.listen(4000) // listen to http://localhost:4000
