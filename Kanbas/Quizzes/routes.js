@@ -7,7 +7,17 @@ const QuizRoutes = (app) => {
     res.json(quiz);
   };
 
-  const deleteQuiz = async (req, res) => { };
+  const deleteQuiz = async (req, res) => {
+    const { quizId } = req.params;
+    try {
+      await dao.deleteQuiz(quizId);
+      res.sendStatus(204); // Send a 204 No Content status code
+    } catch (err) {
+      console.error('Error deleting quiz:', err);
+      res.status(500).json({ error: 'Internal server error' });
+    }
+  };
+
 
   const findQuizById = async (req, res) => {
     const quiz = await dao.findQuizById(req.params.quizId);
