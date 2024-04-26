@@ -3,8 +3,9 @@ import mongoose from "mongoose";
 const questionSchema = new mongoose.Schema({
     _id: String,
     name: String,
-    points: Number,
+    points: String,
     quiz: String,
+    value: String,
     type: {
       type: String,
       enum: ["MC", "TF", "BLANK"],

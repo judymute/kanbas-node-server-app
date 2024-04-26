@@ -1,35 +1,42 @@
-import { Quiz } from './model.js';
+import * as dao from "./dao.js";
 
 const QuizRoutes = (app) => {
-  app.post('/quizzes', async (req, res) => {
-    try {
-      const quiz = new Quiz(req.body);
-      await quiz.save();
-      res.status(200).json(quiz);
-    } catch (error) {
-      res.status(500).json({ error: 'Internal server error' });
-    }
-  });
+  const createQuiz = async (req, res) => {
+    const quiz = await dao.createQuiz(req.body);
+    console.log('create a quiz:' + quiz);
+    res.json(quiz);
+  };
 
-  app.get('/quizzes', async (req, res) => {
-    try {
-      const courseId = req.query.courseId;
-      const quizzes = await Quiz.find({ courseId });
-      res.status(200).json(quizzes);
-    } catch (error) {
-      res.status(500).json({ error: 'Internal server error' });
-    }
-  });
+  const deleteQuiz = async (req, res) => { };
 
-  app.post('/quizzes/save', async (req, res) => {
-    try {
-      const quizzesData = req.body;
-      await Quiz.insertMany(quizzesData);
-      res.status(200).json({ message: 'Quizzes saved successfully' });
-    } catch (error) {
-      res.status(500).json({ error: 'Internal server error' });
-    }
-  });
+  const findQuizById = async (req, res) => {
+    const quiz = await dao.findQuizById(req.params.quizId);
+    res.json(quiz);
+  };
+
+  const updateQuiz = async (req, res) => {
+    const { quizId } = req.params;
+    const status = await dao.updateQuiz(quizId, req.body);
+    console.log('update a quiz:' + status);
+    res.json(status);
+  };
+
+  const current = async (req, res) => {
+    res.json(currentQuiz);
+  };
+
+  const findAllQuizzes = async (req, res) => {
+    const quizzes = await dao.findAllQuizzes();
+    res.json(quizzes);
+  };
+
+
+  app.post("/api/quizzes", createQuiz);
+  app.delete("/api/quizzes/:quizId", deleteQuiz);
+  app.put("/api/quizzes/:quizId", updateQuiz);
+  app.get("/api/quizzes/:quizId", findQuizById);
+  app.post("/api/quizzes/current", current);
+  app.get("/api/quizzes", findAllQuizzes);
 };
 
 export default QuizRoutes;
