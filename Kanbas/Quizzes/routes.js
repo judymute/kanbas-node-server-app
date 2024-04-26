@@ -16,9 +16,9 @@ const QuizRoutes = (app) => {
 
   const updateQuiz = async (req, res) => {
     const { quizId } = req.params;
-    const status = await dao.updateQuiz(quizId, req.body);
-    console.log('update a quiz:' + status);
-    res.json(status);
+    const updatedQuiz = await dao.updateQuiz(quizId, req.body);
+    console.log('update a quiz:' + updatedQuiz);
+    res.json(updatedQuiz);
   };
 
   const current = async (req, res) => {
