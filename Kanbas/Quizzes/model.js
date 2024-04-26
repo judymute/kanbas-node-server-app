@@ -10,6 +10,13 @@ const quizSchema = new mongoose.Schema({
     enum: ["Quizzes", "Exams", "Assignments", "Project"],
     default: "Quizzes",},
   courseId: String,
+  quizType: String,
+  shuffleAnswers: Boolean,
+  timeLimit: String,
+  allowMultipleAttempts: Boolean,
+  showCorrectAnswers: Boolean,
+  showOneQuestionAtATime: Boolean,
+  published: Boolean,
   questions: { type: [questionSchema], default: [] }
 },
 { collection: "quizzes" });
