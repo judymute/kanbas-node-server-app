@@ -2,31 +2,20 @@ import * as dao from "./dao.js";
 let currentQuestion = null;
 export default function QuestionRoutes(app) {
   const createQuestion = async (req, res) => {
-    try {
-      const question = await dao.createQuestion(req.body);
-      console.log('Created question:', question);
-      res.json(question);
-    } catch (err) {
-      console.error('Error creating question:', err);
-      res.status(500).json({ error: 'Internal server error' });
-    }
-  };
+        const question = await dao.createQuestion(req.body);
+        console.log('create a question:' + question);
+        res.json(question);
+      };
     
   const deleteQuestion = async (req, res) => { };
 
   const updateQuestion = async (req, res) => {
-    try {
-      const { questionId } = req.params;
-      const status = await dao.updateQuestion(questionId, req.body);
-      currentQuestion = await dao.findQuestionById(questionId);
-      console.log('update a question:' + status);
-      res.json(status);
-    } catch (err) {
-      console.error('Error updating question:', err);
-      res.status(500).json({ error: 'Internal server error' });
-    }
+    const { questionId } = req.params;
+    const status = await dao.updateQuestion(questionId, req.body);
+    currentQuestion = await dao.findQuestionById(questionId);
+    console.log('update a question:' + status);
+    res.json(status);
   };
-
 
   const findQuestionById = async (req, res) => {
     const question = await dao.findQuestionById(req.params.questionId);
@@ -38,14 +27,14 @@ export default function QuestionRoutes(app) {
   };
 
   const findAllQuestions = async (req, res) => {
-    try {
-      const questions = await dao.findAllQuestions();
-      console.log('All questions:', questions);
+    const { quiz } = req.query;
+    if (quiz) {
+      const questions = await dao.findQuestionsByQuiz(quiz); //by id and not entire quiz?
       res.json(questions);
-    } catch (err) {
-      console.error('Error fetching all questions:', err);
-      res.status(500).json({ error: 'Internal server error' });
+      return;
     }
+    const questions = await dao.findAllQuestions();
+    res.json(questions);
   };
 
   app.post("/api/questions", createQuestion);
@@ -54,5 +43,4 @@ export default function QuestionRoutes(app) {
   app.get("/api/questions/:questionId", findQuestionById);
   app.post("/api/questions/current", current);
   app.get("/api/questions", findAllQuestions);
-
 }
